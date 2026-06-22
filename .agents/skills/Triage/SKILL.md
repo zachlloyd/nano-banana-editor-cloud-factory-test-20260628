@@ -22,7 +22,25 @@ Extract the issue URL, key, or number from the prompt. Determine whether it belo
 
 If the prompt does not identify one issue unambiguously, ask the user for the issue rather than guessing.
 
-### 2. Fetch tracker context
+### 2. Post a triage-started status comment
+
+For GitHub Issues, post a short status comment before doing deeper work so issue subscribers know triage is in progress.
+
+Use the authenticated `gh` CLI when available. Include:
+
+- That automated Oz triage has started.
+- The implementation-readiness states being evaluated.
+- A follow-along link to the running session or workflow.
+
+Prefer a direct Oz session or Oz run URL if one is exposed in the environment, prompt, action logs, or agent runtime. If no Oz-specific link is available, use the GitHub Actions run URL when it is provided in the prompt. If neither link is available, say that no live session link is available rather than blocking triage.
+
+Keep this comment concise. Example:
+
+> Oz triage is running now and will classify this issue as exactly one of: `Ready to implement`, `Ready to spec`, `Needs info`, or `Wait to implement`.
+>
+> Follow along: LINK
+
+### 3. Fetch tracker context
 
 Use the best available integration in this order:
 
@@ -41,7 +59,9 @@ Fetch:
 
 Do not classify solely from the title. Do not expose credentials or secrets while fetching tracker data.
 
-### 3. Inspect the current codebase
+After fetching the issue description, comments, labels, and related open issues, post a brief progress comment only if this step reveals that triage may take longer than expected or needs to inspect a broader part of the codebase. Avoid noisy updates for fast, routine issues.
+
+### 4. Inspect the current codebase
 
 Confirm the current checkout is the relevant repository. Search the codebase for the affected feature, behavior, terminology, and likely implementation area.
 
@@ -56,7 +76,9 @@ Assess:
 
 Prefer targeted searches and reads. This is triage, not implementation: do not edit product code.
 
-### 4. Choose one state
+If codebase inspection uncovers a useful implementation area or an ambiguity that materially changes the triage direction, post one concise progress comment summarizing what area is being checked. Do not post internal chain-of-thought, speculative reasoning, secrets, or large command output.
+
+### 5. Choose one state
 
 Use the following rubric. When evidence sits between states, choose the more cautious state.
 
@@ -104,7 +126,7 @@ Choose when:
 
 Explain what would need to change before reconsidering it. Do not use this state merely because an issue is difficult; complex but cohesive work is usually `Ready to spec`.
 
-### 5. Match and apply the tracker label
+### 6. Match and apply the tracker label
 
 Inspect the tracker's existing labels before changing anything.
 
@@ -119,7 +141,7 @@ For the chosen state:
 
 If permissions prevent creating, removing, or applying labels, do not pretend the update succeeded. Report the chosen state, the intended label change, and the permission error.
 
-### 6. Report the result
+### 7. Report the result
 
 Keep the final response concise and include:
 
@@ -144,4 +166,6 @@ Use this format:
 - Do not close, assign, reprioritize, or otherwise mutate the issue unless the user asks.
 - Do not overwrite unrelated labels.
 - Do not classify an issue without checking both the tracker context and the current codebase.
+- Do not post excessive status comments. Always post the triage-started comment, then post at most two additional progress comments before the final result unless the issue is blocked by permissions or missing information.
+- Do not post raw secrets, tokens, private environment variables, command output dumps, or internal reasoning in status comments.
 - Treat comments from maintainers and linked product/spec documents as stronger evidence than guesses from code alone.
