@@ -30,15 +30,15 @@ Use the authenticated `gh` CLI when available. Include:
 
 - That automated Oz triage has started.
 - The implementation-readiness states being evaluated.
-- A follow-along link to the running session or workflow.
+- A follow-along link to the Oz run or Oz session.
 
-Prefer a direct Oz session or Oz run URL if one is exposed in the environment, prompt, action logs, or agent runtime. If no Oz-specific link is available, use the GitHub Actions run URL when it is provided in the prompt. If neither link is available, say that no live session link is available rather than blocking triage.
+Use an Oz run URL or Oz session URL from the agent runtime, action output, environment, or logs. Do not use a GitHub Actions workflow URL as the follow-along link. If no Oz run or session link is available yet, say that the Oz follow-along link is not available yet rather than substituting another URL, and continue triage.
 
 Keep this comment concise. Example:
 
 > Oz triage is running now and will classify this issue as exactly one of: `Ready to implement`, `Ready to spec`, `Needs info`, or `Wait to implement`.
 >
-> Follow along: LINK
+> Follow along in Oz: LINK
 
 ### 3. Fetch tracker context
 

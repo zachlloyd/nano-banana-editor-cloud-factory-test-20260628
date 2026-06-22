@@ -46,15 +46,15 @@ jobs:
             - Repository: ${{ github.repository }}
             - Issue number: #${{ github.event.issue.number }}
             - Issue URL: ${{ github.event.issue.html_url }}
-            - GitHub Actions run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             Follow the Triage skill: use the `gh` CLI to fetch the full issue
             (title, body, comments, existing labels) and related open issues,
             inspect this checked-out codebase, then choose exactly one
             implementation-readiness state and apply the matching label.
-            Post status comments as directed by the Triage skill, including the
-            follow-along link above unless a more direct Oz session/run link is
-            available. After labeling, post your triage result as a comment on
-            the issue using `gh issue comment #${{ github.event.issue.number }}`.
+            Post status comments as directed by the Triage skill, using only an
+            Oz run or Oz session URL as the follow-along link. Do not use the
+            GitHub Actions workflow URL as the follow-along link. After labeling,
+            post your triage result as a comment on the issue using
+            `gh issue comment #${{ github.event.issue.number }}`.
           warp_api_key: ${{ secrets.WARP_API_KEY }}
           profile: ${{ vars.WARP_AGENT_PROFILE || '' }}

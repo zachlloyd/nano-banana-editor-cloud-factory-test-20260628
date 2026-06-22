@@ -45,13 +45,14 @@ jobs:
             - Issue number: #${{ github.event.issue.number }}
             - Issue URL: ${{ github.event.issue.html_url }}
             - Applied label: ${{ github.event.label.name }}
-            - GitHub Actions run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             Fetch the full issue and comments with the authenticated `gh` CLI,
             inspect this checked-out codebase, implement the smallest cohesive
             fix or feature, validate it, create a branch, push it, and open a
             GitHub pull request. Post implementation progress comments to the
-            original issue as directed by the skill, and post the final PR link
-            back to the issue.
+            original issue as directed by the skill, using only an Oz run or Oz
+            session URL as the follow-along link. Do not use the GitHub Actions
+            workflow URL as the follow-along link. Post the final PR link back to
+            the issue.
           warp_api_key: ${{ secrets.WARP_API_KEY }}
           profile: ${{ vars.WARP_AGENT_PROFILE || '' }}
