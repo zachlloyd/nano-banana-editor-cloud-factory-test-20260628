@@ -15,8 +15,8 @@ else
 fi
 
 mkdir -p .github/workflows
-curl -fsSL "${RAW_BASE}/.github/workflows/triage-issues.yml" -o .github/workflows/triage-issues.yml
-curl -fsSL "${RAW_BASE}/.github/workflows/implement-ready-issues.yml" -o .github/workflows/implement-ready-issues.yml
+curl -fsSL "${RAW_BASE}/templates/github/workflows/triage-issues.yml" -o .github/workflows/triage-issues.yml
+curl -fsSL "${RAW_BASE}/templates/github/workflows/implement-ready-issues.yml" -o .github/workflows/implement-ready-issues.yml
 
 printf 'Installed Cloud Factory skills and workflow templates from %s.\n' "${REPO}"
 printf 'Ensure the WARP_API_KEY GitHub Actions secret is configured before enabling these workflows.\n'
