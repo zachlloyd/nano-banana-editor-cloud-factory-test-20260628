@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "Triage": {
+      "source": "warpdotdev-demos/cloud-factory-demo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/Triage/SKILL.md",
+      "computedHash": "b5c28bef4261a71cd1401f56529527ca7635c9bc3024eaa80c6e6669675ab56a"
+    },
+    "implementation": {
+      "source": "warpdotdev-demos/cloud-factory-demo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/implementation/SKILL.md",
+      "computedHash": "60c717c070b530e597760da0be83f1dd140cc535bbd0eedbaec5cbd0b01beae5"
+    }
+  }
+}
