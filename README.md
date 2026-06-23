@@ -158,6 +158,18 @@ Don't forget to add your `GOOGLE_GENERATIVE_AI_API_KEY` in the Vercel environmen
 
 The app is a standard Next.js application and can be deployed to any platform that supports Node.js.
 
+## 🤖 Cloud Factory Automation
+
+This repository consumes Cloud Factory skills from the canonical [`warpdotdev-demos/cloud-factory-demo`](https://github.com/warpdotdev-demos/cloud-factory-demo) repository.
+
+To install or refresh the Triage and Implementation skills and workflow templates locally, run:
+
+```bash
+./scripts/bootstrap-cloud-factory.sh
+```
+
+The bootstrap script uses `npx skills install` to install the canonical skills into this repo and copies the workflow templates from `cloud-factory-demo`. Configure the `WARP_API_KEY` GitHub Actions secret before enabling the workflows.
+
 ## 🤝 Contributing
 
 1. Fork the repository
